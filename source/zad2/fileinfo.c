@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 #include <time.h>
 #include <string.h>
-#include <sys/types.h>
 #include <pwd.h>
-#include <uuid/uuid.h>
 #include <grp.h>
 #include <uuid/uuid.h>
 
@@ -71,9 +70,14 @@ void show_stat_info(char *fname, struct stat *buf) {
 int main(int argc, char *argv[]) {
   struct stat info;
   if (argc > 1) {
+    printf(" >> Czytamy plik: %s\n", argv[1]);
+
     if (stat(argv[1], &info) != -1) {
       show_stat_info( argv[1], &info);
       return 0;
+    } else {
+      /* not exists, throw error */
+      perror(argv[1]);
     }
   } else {
     printf("Uzycie: %s nazwa_pliku\n", argv[0]);

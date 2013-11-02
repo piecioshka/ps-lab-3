@@ -3,7 +3,7 @@
 #include <sys/stat.h>
 #include <string.h>
 
-void mode_to_letters( int mode, char str[] ) {
+void mode_to_letters(int mode, char str[]) {
   strcpy( str, "----------" ); /* default=no perms */
   if (S_ISDIR(mode) ) str[0] = 'd'; /* directory? */
   if (S_ISCHR(mode) ) str[0] = 'c'; /* char devices */
@@ -23,21 +23,21 @@ int main(int argc, char * argv[]) {
   struct stat info;
   static char perms[255];
   if (argc > 1) {
-    printf("czytamy plik: %s\n", argv[1]);
+    printf(" >> Czytamy plik: %s\n", argv[1]);
 
     /* check if file exists */
     if (stat(argv[1], &info) != -1 ) {
       /* exists */
       /* show_stat_info( argv[1], &info ); */
       mode_to_letters(info.st_mode, perms);
-      printf("prawa dostepu dla pliku: %s\n", perms);
+      printf("Prawa dostepu dla pliku: %s\n", perms);
       return 0;
     } else {
       /* not exists, throw error */
       perror(argv[1]);
     }
   } else {
-    fprintf(stderr, "Podaj plik do analizy\n");
+    fprintf(stderr, "Podaj plik do analizy!\n");
   }
   return 1;
 }

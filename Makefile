@@ -15,6 +15,9 @@ zad3:
 zad4:
 	${CC} ${CFLAGS} ${SRC}$@/ls1.c -o ${TARGET}$@/ls1.o
 
+zad5:
+	${CC} ${CFLAGS} ${SRC}$@/cp1.c -o ${TARGET}$@/cp1.o
+
 clean:
 	find . -name "*.o" | xargs rm
 

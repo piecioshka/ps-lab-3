@@ -45,8 +45,6 @@ void copy_file(char * s_name, char * t_name) {
 void copy(char * s, char * t) {
     copy_file(s, t);
 
-    printf("\n");
-
     printf("Print summary? [0/1]: ");
     int show_summary;
     scanf("%d", &show_summary);
@@ -72,7 +70,7 @@ int main(int argc, char *argv[]) {
 
     printf("\n");
 
-    if (argc < 3 && argc > 4) usage();
+    if (argc < 3 || argc > 4) usage();
 
     while ((op = getopt(argc, argv, opts)) != -1) {
         switch (op) {
@@ -81,8 +79,6 @@ int main(int argc, char *argv[]) {
                     printf("File: %s exists, rewrite them? [0/1]: ", argv[3]);
                     int prompt;
                     scanf("%d", &prompt);
-
-                    printf("\n");
 
                     switch (prompt) {
                         case 1: copy(argv[2], argv[3]); break;

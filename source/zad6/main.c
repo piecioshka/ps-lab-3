@@ -1,3 +1,13 @@
+/**
+ * Ścieżka dostępu do polecenia.
+ * Napisz własną wersję polecenia which. Polecenie to działa w oparciu o zmienną PATH.
+ * Pobiera nazwę programu do wykonania i wyświetla jego pełną nazwę ścieżkową,
+ * o ile zostanie znaleziona w jednym z katalogów zmiennej PATH (zobacz działanie polecenia which).
+ * Aby informacja ta była wyświetlona. Dodatkowo musi być spełniony warunek, że użytkownik,
+ * który wydał polecenie which ma prawo do wykonywania tego programu.
+ *
+ * Wskazówka: funkcje do wykorzystania getenv(), geteuid(), getegid(), stat().
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

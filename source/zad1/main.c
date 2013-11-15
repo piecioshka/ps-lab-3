@@ -1,3 +1,8 @@
+/**
+ * Prawa dostępu
+ * Napisz funkcję, która tłumaczy prawa dostępu do pliku zapisane w postaci binarnej
+ * na prawa zapisane w postaci symbolicznej. Prawa do pliku pobierz za pomocą funkcji stat().
+ */
 #include <stdio.h>
 #include "../lib/libutils.c"
 

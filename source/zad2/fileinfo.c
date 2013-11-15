@@ -1,3 +1,15 @@
+/**
+ * Informacja o pliku
+ *  a) Zapoznaj się z programem fileinfo.c z pliku lab3.tar.gz. Uzupełnij program o podawanie nazwy pliku i wszystkich czasów związanych z plikiem.
+ *  b) Zmodyfikuj program tak, aby informacja podawana była w bardziej przyjazny sposób:
+ * File Name:
+ * File Type: (np. zwykły, katalog, ...)
+ * Mode: rw-rw-r-- (ósemkowo) Links:
+ * UID: ania (UID liczbowy) GID: studenci (GID liczbowy) Size:
+ * Accessed: (data ostatniego dostępu) 
+ * Modified: (data ostatniej modyfikacji) 
+ * Changed: (data ostatniej modyfikacji i-węzła)
+ */
 #include <stdio.h>
 #include "../lib/libutils.c"
 

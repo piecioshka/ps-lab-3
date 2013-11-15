@@ -1,3 +1,10 @@
+/**
+ * Polecenie tee czyta ze standardowego wejścia do napotkania końca pliku, zapisuje kopię wejścia na standardowe wyjście i do pliku podanego w wierszu wywołania.
+ * Domyślnie polecenie tee nadpisuje ten plik, jeśli istnieje.
+ * Napisz program, który
+ *  a) działa zgodnie z domyślnym zachowaniem polecenia tee
+ *  b) obsługuje opcję –a plik , która powoduje dopisanie wczytywanych danych do końca pliku, jeśli ten istnieje.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

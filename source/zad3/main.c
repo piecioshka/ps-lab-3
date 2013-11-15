@@ -1,3 +1,8 @@
+/**
+ * Dostęp do pliku
+ * Napisz program, który sprawdza, czy proces może czytać, zapisywać lub uruchamiać plik w zależności od podanego w wywołaniu parametru.
+ * Uwaga: uwzględnić fakt, że prawa dostępu są definiowane dla trzech kategorii: user, group, other.
+ */
 #include <errno.h>
 #include <stdio.h>
 #include <unistd.h>

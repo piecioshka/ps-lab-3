@@ -1,7 +1,8 @@
-/** ls1.c
- **   Program wyswietla zawartosc katalogu biezacego
- **   lub katalogu wskazanego argumentem
- **/
+/**
+ * ls1.c
+ *   Program wyswietla zawartosc katalogu biezacego
+ *   lub katalogu wskazanego argumentem
+ */
 #include <stdio.h>
 #include <dirent.h>
 #include <unistd.h>

@@ -1,3 +1,10 @@
+/**
+ * Kopiowanie plików
+ *  a) Sprawdź jak działa polecenie cp. 2
+ *  b) Zapoznaj się ze uproszczoną wersją polecenia (plik cp1.c).
+ *  c) Jak sprawdzić czy utworzony plik jest kopią pliku źródłowego? Jakie prawa dostępu otrzymał utworzony plik? Czy program dobrze obsługuje błędy? Spróbuj na przykład skopiować nieistniejący plik lub skopiować plik do katalogu. Jakie inne błędy mogłyby wystąpić? Zapoznaj się z opisem użytych w programie funkcji systemowych i spróbuj wygenerować inne błędy
+ *  d) Program w obecnej postaci nadpisuje istniejący plik. Uzupełnij program o obsługę opcji –i pozwalającej użytkownikowi podjąć decyzję, czy chce napisać istniejący plik.
+ */
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>

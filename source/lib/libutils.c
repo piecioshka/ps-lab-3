@@ -1,5 +1,6 @@
 #include <sys/stat.h>
 #include <string.h>
+#include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
 #include <pwd.h>
@@ -31,13 +32,12 @@ char * show_time(int timestamp) {
   return buffer;
 }
 
-char * getloginbyid(int uid) {
+char * uid_to_name(int uid) {
   struct passwd * p = getpwuid(uid);
   return p->pw_name;
 }
 
-
-char * getgroupnamebyid(int gid) {
+char * gid_to_name(int gid) {
   struct group * g = getgrgid(gid);
   return g->gr_name;
 }
@@ -57,8 +57,8 @@ void show_stat_info(char *fname, struct stat *buf) {
   mode_to_letters(buf->st_mode, mode);
   printf("   mode: %s\n", mode); /* type + mode */
   printf("  links: %d\n", buf->st_nlink); /* # links */
-  printf("   user: %s\n", getloginbyid(buf->st_uid)); /* user name */
-  printf("  group: %s\n", getgroupnamebyid(buf->st_gid)); /* group name */
+  printf("   user: %s\n", uid_to_name(buf->st_uid)); /* user name */
+  printf("  group: %s\n", gid_to_name(buf->st_gid)); /* group name */
   printf("   size: %s\n", bytes_to_human(buf->st_size)); /* file size */
   printf("accessed: %s\n", show_time((int) buf->st_atime)); /* accessed */
   printf("modified: %s\n", show_time((int) buf->st_mtime)); /* modified */
@@ -68,7 +68,7 @@ void show_stat_info(char *fname, struct stat *buf) {
 void show_stat_info_oneline(char *fname, struct stat *buf) {
   static char mode[255];
   mode_to_letters(buf->st_mode, mode);
-  printf("%s %d %s %s %s\t%s %s\n", mode, buf->st_nlink, getloginbyid(buf->st_uid), getgroupnamebyid(buf->st_gid), bytes_to_human(buf->st_size), show_time((int) buf->st_mtime), fname);
+  printf("%s %d %s %s %s\t%s %s\n", mode, buf->st_nlink, uid_to_name(buf->st_uid), gid_to_name(buf->st_gid), bytes_to_human(buf->st_size), show_time((int) buf->st_mtime), fname);
 }
 
 char * draw_line(char * word) {

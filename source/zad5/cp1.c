@@ -22,21 +22,21 @@ int main(int argc, char *argv[]) {
     }
 
     if ((in_fd = open(argv[1], O_RDONLY)) == -1) {
-        err("Cannot open ", argv[1]);
+        err("Cannot open: ", argv[1]);
     }
 
     if ((out_fd = creat(argv[2], COPYMODE)) == -1) {
-        err("Cannot creat", argv[2]);
+        err("Cannot creat: ", argv[2]);
     }
 
     while ((n_chars = read(in_fd, buf, BUFFERSIZE)) > 0) {
         if (write(out_fd, buf, n_chars) != n_chars) {
-            err("Write error to ", argv[2]);
+            err("Write error to: ", argv[2]);
         }
     }
 
     if (n_chars == -1) {
-        err("Read error from ", argv[1]);
+        err("Read error from: ", argv[1]);
     }
 
     if (close(in_fd) == -1 || close(out_fd) == -1) {

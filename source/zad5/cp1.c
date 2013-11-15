@@ -45,7 +45,7 @@ void copy_file(char * s_name, char * t_name) {
 void copy(char * s, char * t) {
     copy_file(s, t);
 
-    printf("Print summary? [0/1]: ");
+    printf("Print summary? (0/1): ");
     int show_summary;
     scanf("%d", &show_summary);
 
@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
         switch (op) {
             case 'i':
                 if (file_exists(argv[3])) {
-                    printf("File: %s exists, rewrite them? [0/1]: ", argv[3]);
+                    printf("File: %s exists, rewrite them? (0/1): ", argv[3]);
                     int prompt;
                     scanf("%d", &prompt);
 

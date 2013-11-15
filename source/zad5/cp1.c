@@ -7,12 +7,6 @@
 #define BUFFERSIZE  4096
 #define COPYMODE  0644
 
-void err(char * s1, char * s2) {
-    fprintf(stderr, "Error: %s ", s1);
-    perror(s2);
-    exit(1);
-}
-
 void copy_file(char * s_name, char * t_name) {
     int in_fd, out_fd, n_chars;
     char buf[BUFFERSIZE];

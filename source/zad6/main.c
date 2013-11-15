@@ -21,7 +21,6 @@ int main(int argc, char * argv[]) {
     if (argc != 2) usage();
 
     char * path = getenv("PATH");
-    // printf("%s\n\n", path);
 
     uid_t user_id = geteuid();
     char * login = uid_to_name(user_id);
@@ -31,11 +30,11 @@ int main(int argc, char * argv[]) {
     char * sp = strtok(path, ":");
     char * filename = malloc(1000);
     char * rights;
+    int found = 0;
 
     while (sp != NULL) {
         sp = strtok(NULL, ":");
         if (sp == NULL) continue;
-        // printf("%s\n", sp);
 
         snprintf(filename, strlen(sp) + strlen(argv[1]) + 2, "%s/%s", sp, argv[1]);
 
@@ -46,7 +45,12 @@ int main(int argc, char * argv[]) {
                 rights = "no";
             }
             printf(" - %s -> rights: %s\n", filename, rights);
+            found = 1;
         }
+    }
+
+    if (found == 0) {
+        printf("program doesn't exists!\n");
     }
 
     exit(0);

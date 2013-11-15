@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include "../lib/libutils.c"
 
 #define BUFFERSIZE  4096
 #define COPYMODE  0644
@@ -15,9 +16,22 @@ void err(char *s1, char *s2) {
 int main(int argc, char *argv[]) {
     int in_fd, out_fd, n_chars;
     char buf[BUFFERSIZE];
+    char * opts = "i";
+    int op;
+
+    while ((op = getopt(argc, argv, opts)) != -1) {
+        switch (op) {
+            case 'i':
+                printf("selected option: i\n");
+                break;
+            case '?':
+            default:
+                printf("selected option: none\n");
+        }
+    }
 
     if (argc != 3) {
-        fprintf(stderr, "usage: %s source destination\n", *argv);
+        fprintf(stderr, "Usage: %s source destination\n", *argv);
         exit(1);
     }
 
@@ -42,6 +56,10 @@ int main(int argc, char *argv[]) {
     if (close(in_fd) == -1 || close(out_fd) == -1) {
         err("Error closing files", "");
     }
+
+    header("Summary");
+    show_properties(argv[1]);
+    show_properties(argv[2]);
 
     exit(0);
 }

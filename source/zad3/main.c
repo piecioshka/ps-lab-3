@@ -9,7 +9,7 @@ void check_file_exists(char * filename) {
   int prawa = access(filename, F_OK);
 
   if (prawa == 0) {
-    printf (" >> plik %s istnieje\n", filename);
+    printf (" >> plik %s istnieje\n\n", filename);
   } else {
     if (errno == ENOENT) {
       printf(" >> plik %s nie istnieje\n", filename);
@@ -83,9 +83,9 @@ void check_execute_perms(char * filename) {
 
 void print_usage(char * program) {
   printf("\nUzycie %s\n", program);
-  printf("\n\tr filename\tcheck if program have access to read this");
-  printf("\n\tw filename\tcheck if program have access to write this");
-  printf("\n\tx filename\tcheck if program have access to run thisi\n\n");
+  printf("\n\t-r filename\tcheck if program have access to read this");
+  printf("\n\t-w filename\tcheck if program have access to write this");
+  printf("\n\t-x filename\tcheck if program have access to run thisi\n\n");
 }
 
 int main (int argc, char * argv[]) {

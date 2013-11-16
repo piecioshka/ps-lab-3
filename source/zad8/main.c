@@ -21,9 +21,11 @@ void usage() {
     exit(1);
 }
 
-void do_ls(char dirname[], int size) {
-    DIR * dir_ptr; /* katalog */
-    struct dirent * direntp; /* wpis w katalogu */
+int dir_byte(char * dirname) {
+    int byte = 0;
+
+    DIR * dir_ptr;
+    struct dirent * direntp;
 
     if ((dir_ptr = opendir(dirname)) == NULL) {
         fprintf(stderr, "Cannot open: %s\n", dirname);
@@ -31,7 +33,34 @@ void do_ls(char dirname[], int size) {
         while ((direntp = readdir(dir_ptr)) != NULL) {
             char combo[255];
             sprintf(combo, "%s/%s", dirname, direntp->d_name);
-            printf("%s\n", combo);
+            // printf("%s\n", combo);
+
+            if (is_dir(combo) && !is_dot(direntp->d_name)) {
+                byte += dir_byte(combo);
+            } else if (is_file(combo)) {
+                // printf("%d\t%s\n", file_byte(combo), combo);
+                byte += file_byte(combo);
+            } else {
+                // fprintf(stderr, "File: %s can't get size\n", combo);
+            }
+        }
+        closedir(dir_ptr);
+    }
+
+    return byte;
+}
+
+void do_ls(char dirname[], int size) {
+    DIR * dir_ptr;
+    struct dirent * direntp;
+
+    if ((dir_ptr = opendir(dirname)) == NULL) {
+        fprintf(stderr, "Cannot open: %s\n", dirname);
+    } else {
+        while ((direntp = readdir(dir_ptr)) != NULL) {
+            char combo[255];
+            sprintf(combo, "%s/%s", dirname, direntp->d_name);
+            // printf("%s\n", combo);
 
             if (is_dir(combo) && !is_dot(direntp->d_name)) {
                 do_ls(combo, size);
@@ -44,7 +73,7 @@ void do_ls(char dirname[], int size) {
         closedir(dir_ptr);
     }
 
-    printf("%d\t%s\n", file_byte(dirname) / size, dirname);
+    printf("%i\t%s\n", dir_byte(dirname) / size, dirname);
 }
 
 static unsigned int total = 0;

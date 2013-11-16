@@ -21,31 +21,6 @@ void usage() {
     exit(1);
 }
 
-int file_byte(char * filename) {
-    struct stat file;
-    stat(filename, &file);
-    return file.st_size;
-}
-
-int is_dot(char * name) {
-    int single = strcmp(name, ".") == 0;
-    int dbl = strcmp(name, "..") == 0;
-    // printf("File: '%s' is single: %d or double: %d\n", name, single, dbl);
-    return single || dbl;
-}
-
-int is_dir(char * filename) {
-    struct stat file;
-    stat(filename, &file);
-    return file.st_mode & S_IFDIR;
-}
-
-int is_file(char * filename) {
-    struct stat file;
-    stat(filename, &file);
-    return file.st_mode & S_IFREG;
-}
-
 void do_ls(char dirname[], int size) {
     DIR * dir_ptr; /* katalog */
     struct dirent * direntp; /* wpis w katalogu */
@@ -123,3 +98,4 @@ int main(int argc, char * argv[]) {
 
     exit(0);
 }
+

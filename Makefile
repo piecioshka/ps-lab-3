@@ -27,6 +27,9 @@ zad7:
 zad8:
 	${CC} ${CFLAGS} ${SRC}$@/main.c -o ${TARGET}$@/main.o
 
+zad9:
+	${CC} ${CFLAGS} ${SRC}$@/main.c -o ${TARGET}$@/main.o
+
 clean:
 	find . -name "*.o" | xargs rm
 

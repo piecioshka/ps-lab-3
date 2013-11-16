@@ -59,7 +59,7 @@ int main(int argc, char * argv[]) {
         }
     }
 
-    if (found == 0) {
+    if (!found) {
         printf("program doesn't exists!\n");
     }
 

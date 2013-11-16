@@ -32,13 +32,17 @@ int process(const char * fpath, const struct stat *ptr, int flag) {
 }
 
 int main(int argc, char * argv[]) {
+    int sum = 0;
     if (argc == 2) {
         if (file_exists(argv[1]) && is_dir(argv[1])) {
             ftw(argv[1], &process, 1);
-            printf("File: %d\n", files);
-            printf("Dirs: %d\n", dirs);
-            printf("Symbolics: %d\n", symbolics);
-            printf("Sockets: %d\n", sockets);
+            sum = files + dirs + symbolics + sockets;
+            printf("Sum of items: %d\n", sum);
+            printf("---\n");
+            printf("File(%d):\t%d%%\n", files, (files * 100 / sum));
+            printf("Dirs(%d):\t%d%%\n", dirs, (dirs * 100 / sum));
+            printf("Symbolics(%d):\t%d%%\n", symbolics, (symbolics * 100 / sum));
+            printf("Sockets(%d):\t%d%%\n", sockets, (sockets * 100 / sum));
         } else {
             fprintf(stderr, "File: '%s' is not a directory\n", argv[1]);
             exit(1);

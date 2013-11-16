@@ -31,7 +31,7 @@ void do_ls(char dirname[], int size) {
         while ((direntp = readdir(dir_ptr)) != NULL) {
             char combo[255];
             sprintf(combo, "%s/%s", dirname, direntp->d_name);
-            // printf("%s\n", combo);
+            printf("%s\n", combo);
 
             if (is_dir(combo) && !is_dot(direntp->d_name)) {
                 do_ls(combo, size);

@@ -101,7 +101,7 @@ int main (int argc, char * argv[]) {
   char * opts = "r:w:x:";
   int c;
 
-  while((c = getopt(argc, argv, opts)) != -1) {
+  while ((c = getopt(argc, argv, opts)) != -1) {
     switch (c) {
       case 'r':
         check_file_exists(optarg);
